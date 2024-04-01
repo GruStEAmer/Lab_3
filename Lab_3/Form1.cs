@@ -89,7 +89,8 @@ namespace Lab_3
                 int b_point = b.TabIndex;
                 for (int i = b_point; i > 0; i--)
                 {
-                    if (((d[i].Item1 < d[b_point].Item1 && d[b_point].Item1 < d[i].Item3) ||
+                    if
+                    (  ((d[i].Item1 < d[b_point].Item1 && d[b_point].Item1 < d[i].Item3) ||
                         (d[i].Item1 < d[b_point].Item3 && d[b_point].Item3 < d[i].Item3)) &&
                        ((d[i].Item2 < d[b_point].Item2 && d[b_point].Item2 < d[i].Item4) ||
                         (d[i].Item2 < d[b_point].Item4 && d[b_point].Item4 < d[i].Item4))
@@ -97,6 +98,35 @@ namespace Lab_3
                     {
                         return;
                     }
+                    else if( 
+                        ((d[i].Item1 < d[b_point].Item1 && d[b_point].Item1 < d[i].Item3) ||
+                        (d[i].Item1 < d[b_point].Item3 && d[b_point].Item3 < d[i].Item3)) &&
+                        ((d[i].Item2 > d[b_point].Item2 && d[b_point].Item4 > d[i].Item2) ||
+                        (d[i].Item4 > d[b_point].Item2 && d[b_point].Item4 > d[i].Item4))
+                    )
+                    {
+                        return;
+                    }
+                    else if (
+                        ((d[i].Item1 > d[b_point].Item1 && d[b_point].Item1 > d[i].Item3) ||
+                        (d[i].Item1 > d[b_point].Item3 && d[b_point].Item3 > d[i].Item3)) &&
+                        ((d[i].Item2 < d[b_point].Item2 && d[b_point].Item4 < d[i].Item2) ||
+                        (d[i].Item4 < d[b_point].Item2 && d[b_point].Item4 < d[i].Item4))
+                    )
+                    {
+                        return;
+                    }
+                    else if 
+                    (
+                        ((d[i].Item1 > d[b_point].Item1 && d[b_point].Item3 > d[i].Item3) ||
+                        (d[i].Item3 < d[b_point].Item3 && d[b_point].Item1 < d[i].Item3)) &&
+                       ((d[i].Item2 > d[b_point].Item2 && d[b_point].Item2 > d[i].Item4) ||
+                        (d[i].Item2 < d[b_point].Item4 && d[b_point].Item4 < d[i].Item4))
+                    )
+                    {
+                        return;
+                    }
+
                 }
                 point--;
                 d[b.TabIndex] = Tuple.Create(0, 0, 0, 0);
