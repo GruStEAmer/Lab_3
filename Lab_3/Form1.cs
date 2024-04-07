@@ -29,7 +29,6 @@ namespace Lab_3
                 Button btn = new Button();
 
                 //Свойства кнопки
-                btn.BringToFront();
                 btn.Location = new Point(rnd.Next(0, 600), rnd.Next(0, 400));
                 btn.Name = "But" + endless_point.ToString();
                 btn.AutoSize = true;
@@ -53,7 +52,7 @@ namespace Lab_3
 
                 //Показываем
                 Controls.Add(btn);
-                    
+                btn.BringToFront();
                 //Проверка
                 point++;
                 endless_point++;
@@ -69,10 +68,12 @@ namespace Lab_3
             if (final_game)
             {
                 MessageBox.Show("You won!");
+                Application.Exit();
             }
             else
             {
                 MessageBox.Show("You lose!");
+                Application.Exit();
             }
 
         }
@@ -87,7 +88,7 @@ namespace Lab_3
             {
                 Button b = (Button)sender;
                 int b_point = b.TabIndex;
-                for (int i = b_point; i > 0; i--)
+                for (int i = b_point; i < endless_point; i++)
                 {
                     if
                     (  ((d[i].Item1 < d[b_point].Item1 && d[b_point].Item1 < d[i].Item3) ||
